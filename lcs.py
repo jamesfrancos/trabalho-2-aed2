@@ -19,7 +19,10 @@ def lcs(item1,item2):
             caminho.append(menor[i])
             return guloso(caminho,i+1,j+1)
         else:
-            return guloso(caminho,i,j+1)
+            if(i+1 < len(menor) and menor[i+1] == maior[j]):
+                return guloso(caminho,i+1,j)
+            else:
+                return guloso(caminho,i,j+1)
 
 
     return guloso([],0,0)
@@ -33,3 +36,6 @@ fim = time.perf_counter()
 tempoTotal = fim - inicio
 print(Z)
 print(f"tempo total:{tempoTotal:.6f} segundos")
+
+
+
